@@ -17,7 +17,7 @@ html, body {
 }
 
 #text {
-    padding-top: 100px;
+    padding-top: 50px;
     margin-inline: auto;
     width: min(90%, 600px);
     text-align: center;
@@ -25,4 +25,4 @@ html, body {
 
 a {
     color: blue;
-  }
+}
