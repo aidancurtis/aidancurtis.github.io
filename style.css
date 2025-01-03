@@ -1,14 +1,13 @@
 * {
+    font-family: 'EB Garamond', serif;
     margin: 0px;
     padding: 0px;
+    font-size: 20px;
 }
 
 html, body {
     height: 100%;
-    background-color: #f0f0f0;
-}
-  
-#bg {
+    background-color: #eeeeee;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -16,13 +15,26 @@ html, body {
     top: 0;
 }
 
-#text {
-    padding-top: 100px;
-    margin-inline: auto;
-    width: min(90%, 600px);
-    text-align: center;
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
 }
 
-a {
-    color: blue;
+#container {
+    padding-top: 80px;
+    margin-inline: auto;
+    width: min(80%, 600px);
+}
+
+#name {
+    font-size: 80px;
+    color: #201E1F;
+}
+
+.about {
+    text-align: justify;
 }
