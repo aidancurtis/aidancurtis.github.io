@@ -1,13 +1,22 @@
+:root {
+    --main-bg-color-light-mode: #FDFCF5;
+    --main-text-color-light-mode: #46505D;
+    --header-color-light-mode: #3C3C3B;
+
+    --main-bg-color-dark-mode: #3C3C3B;
+    --main-text-color-dark-mode: #d1d1ca;
+    --header-color-dark-mode: #FDFCF5;
+}
+
 * {
     font-family: 'EB Garamond', serif;
     margin: 0px;
     padding: 0px;
-    font-size: 20px;
 }
 
 html, body {
     height: 100%;
-    background-color: #eeeeee;
+    background-color: var(--main-bg-color-dark-mode);
     position: absolute;
     right: 0;
     bottom: 0;
@@ -24,17 +33,27 @@ p {
     unicode-bidi: isolate;
 }
 
-#container {
+.container {
+    /* background-color: red; */
     padding-top: 80px;
+    padding-bottom: 60px;
     margin-inline: auto;
     width: min(80%, 600px);
 }
 
-#name {
-    font-size: 80px;
-    color: #201E1F;
+.name {
+    font-size: 70px;
+    text-align: left;
+    color: var(--header-color-dark-mode);
 }
 
 .about {
-    text-align: justify;
+    /* background-color: aqua; */
+    font-size: 22px;
+    text-align: left;
+    color: var(--main-text-color-dark-mode);
+}
+
+a {
+    color: rgb(0, 200, 255);
 }
