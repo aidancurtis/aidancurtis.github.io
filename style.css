@@ -12,17 +12,26 @@
     font-family: 'EB Garamond', serif;
 }
 
-body {
-    width: 60%;
-    max-width: 960px;
-    margin: 20px 20% 40px 20%;
+html, body {
+    height: 100%;
     background-color: var(--main-bg-color-dark-mode);
-    font-size: 20px;
-    line-height: 1.5;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+}
+
+.content {
+    /* background-color: purple; */
+    margin-inline: auto;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    width: min(80%, 700px);
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     text-align: left;
     color: var(--header-color-dark-mode);
 }
@@ -52,4 +61,27 @@ a:hover {
 .portrait {
     float: right;
     margin: 50px 0px 0px 40px;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 3em;
+    }
+    .portrait {
+        float: none;
+        padding: 0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        /* width: 50%;
+        height: 50%; */
+    }
+    .name {
+        /* background-color: aqua; */
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        color: var(--header-color-dark-mode);
+    }
 }
