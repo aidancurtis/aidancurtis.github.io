@@ -27,7 +27,7 @@ html, body {
     margin-inline: auto;
     margin-top: 40px;
     padding-bottom: 40px;
-    width: min(80%, 700px);
+    width: min(80%, 760px);
 }
 
 h1 {
@@ -40,7 +40,12 @@ h2 {
     unicode-bidi: isolate;
 }
 
+p {
+    font-size: 1.25em;
+}
+
 ul {
+    font-size: 1.25em;
     display: block;
     list-style-type: square;
 }
@@ -66,6 +71,10 @@ a:hover {
 @media (max-width: 600px) {
     h1 {
         font-size: 3em;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        color: var(--header-color-dark-mode);
     }
     .portrait {
         float: none;
@@ -76,12 +85,5 @@ a:hover {
         margin-top: 20px;
         /* width: 50%;
         height: 50%; */
-    }
-    .name {
-        /* background-color: aqua; */
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        color: var(--header-color-dark-mode);
     }
 }
