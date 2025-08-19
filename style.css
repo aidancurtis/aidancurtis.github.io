@@ -1,21 +1,32 @@
 :root {
-    --main-bg-color-light-mode: #FDFCF5;
-    --main-text-color-light-mode: #46505D;
-    --header-color-light-mode: #3C3C3B;
+    --main-bg-color-light-mode: #eeedec;
+    --main-text-color-light-mode: #2c2c2c;
+    --header-color-light-mode: #343633;
 
     --main-bg-color-dark-mode: #3C3C3B;
     --main-text-color-dark-mode: #dfdfd7;
     --header-color-dark-mode: #FDFCF5;
+
+    color-scheme: dark;
 }
 
 * {
     font-family: 'EB Garamond', serif;
 }
 
-html, body {
-    height: 100%;
-    background-color: var(--main-bg-color-dark-mode);
+html {
+    display: block;
+
+    background-color: light-dark(var(--main-bg-color-light-mode), var(--main-bg-color-dark-mode));
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
     position: absolute;
+    margin: 0;
+    padding: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -23,21 +34,24 @@ html, body {
 }
 
 .content {
-    /* background-color: purple; */
-    margin-inline: auto;
-    margin-top: 40px;
+    display: block;
+    padding: 0;
     padding-bottom: 40px;
-    width: min(80%, 760px);
+    width: 600px;
+    margin: 40px auto;
 }
 
 h1 {
     font-size: 3em;
+    /* background-color: red; */
+    margin: 0;
     text-align: left;
-    color: var(--header-color-dark-mode);
+    color: light-dark(var(--header-color-light-mode), var(--header-color-dark-mode));
 }
 
 h2 {
     unicode-bidi: isolate;
+    color: light-dark(var(--header-color-light-mode), var(--header-color-dark-mode));
 }
 
 p {
@@ -51,11 +65,11 @@ ul {
 }
 
 .about {
-    color: var(--main-text-color-dark-mode);
+    color: light-dark(var(--main-text-color-light-mode), var(--main-text-color-dark-mode));
 }
 
 a {
-    color: rgb(0, 200, 255);
+    color: #5CC8FF;
     text-decoration: none;
 }
 
@@ -64,26 +78,22 @@ a:hover {
 }
 
 .portrait {
-    float: right;
-    margin: 50px 0px 0px 40px;
+    float: left;
+    margin: 0px 20px 0px 0px;
 }
 
-@media (max-width: 600px) {
-    h1 {
-        font-size: 3em;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        color: var(--header-color-dark-mode);
-    }
-    .portrait {
-        float: none;
-        padding: 0px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 20px;
-        /* width: 50%;
-        height: 50%; */
-    }
+@media screen and (max-width: 600px) {
+  .content {
+    margin: 20px auto;
+    padding: 0 20px 0 20px;
+    width: auto;
+    word-wrap: break-word;
+    padding-bottom: 20px;
+  }
+
+  img {
+    max-width: 150px;
+    width: auto;
+    height: auto;
+  }
 }
