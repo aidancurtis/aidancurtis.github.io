@@ -64,7 +64,7 @@ ul {
     list-style-type: square;
 }
 
-.about {
+article {
     color: light-dark(var(--main-text-color-light-mode), var(--main-text-color-dark-mode));
 }
 
