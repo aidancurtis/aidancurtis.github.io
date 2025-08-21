@@ -1,1 +1,1 @@
-[#aidancurtis.github.io](https://aidancurtis.github.io)
+[aidancurtis.github.io](https://aidancurtis.github.io)
