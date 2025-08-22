@@ -3,21 +3,24 @@
     --main-text-color-light-mode: #2c2c2c;
     --header-color-light-mode: #343633;
 
-    --main-bg-color-dark-mode: #3C3C3B;
+    --main-bg-color-dark-mode: #3c3c3b;
     --main-text-color-dark-mode: #dfdfd7;
-    --header-color-dark-mode: #FDFCF5;
+    --header-color-dark-mode: #fdfcf5;
 
     color-scheme: dark;
 }
 
 * {
-    font-family: 'EB Garamond', serif;
+    font-family: "EB Garamond", serif;
 }
 
 html {
     display: block;
 
-    background-color: light-dark(var(--main-bg-color-light-mode), var(--main-bg-color-dark-mode));
+    background-color: light-dark(
+        var(--main-bg-color-light-mode),
+        var(--main-bg-color-dark-mode)
+    );
 
     margin: 0;
     padding: 0;
@@ -36,22 +39,27 @@ body {
 .content {
     display: block;
     padding: 0;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
     width: 600px;
     margin: 40px auto;
 }
 
 h1 {
     font-size: 3em;
-    /* background-color: red; */
     margin: 0;
     text-align: left;
-    color: light-dark(var(--header-color-light-mode), var(--header-color-dark-mode));
+    color: light-dark(
+        var(--header-color-light-mode),
+        var(--header-color-dark-mode)
+    );
 }
 
 h2 {
     unicode-bidi: isolate;
-    color: light-dark(var(--header-color-light-mode), var(--header-color-dark-mode));
+    color: light-dark(
+        var(--header-color-light-mode),
+        var(--header-color-dark-mode)
+    );
 }
 
 p {
@@ -65,11 +73,16 @@ ul {
 }
 
 article {
-    color: light-dark(var(--main-text-color-light-mode), var(--main-text-color-dark-mode));
+    margin: 0;
+    padding: 0;
+    color: light-dark(
+        var(--main-text-color-light-mode),
+        var(--main-text-color-dark-mode)
+    );
 }
 
 a {
-    color: #5CC8FF;
+    color: #5cc8ff;
     text-decoration: none;
 }
 
@@ -83,17 +96,17 @@ a:hover {
 }
 
 @media screen and (max-width: 600px) {
-  .content {
-    margin: 20px auto;
-    padding: 0 20px 0 20px;
-    width: auto;
-    word-wrap: break-word;
-    padding-bottom: 20px;
-  }
+    .content {
+        margin: 20px auto;
+        padding: 0 20px 0 20px;
+        width: auto;
+        word-wrap: break-word;
+        padding-bottom: 20px;
+    }
 
-  img {
-    max-width: 150px;
-    width: auto;
-    height: auto;
-  }
+    img {
+        max-width: 150px;
+        width: auto;
+        height: auto;
+    }
 }
