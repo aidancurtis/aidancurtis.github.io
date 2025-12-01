@@ -7,7 +7,7 @@
     --main-text-color-dark-mode: #dfdfd7;
     --header-color-dark-mode: #fdfcf5;
 
-    color-scheme: dark;
+    color-scheme: light;
 }
 
 * {
@@ -63,11 +63,11 @@ h2 {
 }
 
 p {
-    font-size: 1.25em;
+    font-size: 1.3em;
 }
 
 ul {
-    font-size: 1.25em;
+    font-size: 1.3em;
     display: block;
     list-style-type: square;
 }
@@ -82,7 +82,7 @@ article {
 }
 
 a {
-    color: #5cc8ff;
+    color: #0096E0;
     text-decoration: none;
 }
 
