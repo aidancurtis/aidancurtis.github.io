@@ -29,6 +29,9 @@ html {
 body {
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .content {
@@ -93,4 +96,14 @@ a:hover {
 
 .photo {
   border-radius: 0px;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 0 30px;
+  }
+
+  body {
+    font-weight: 500;
+  }
 }
