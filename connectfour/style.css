@@ -1,0 +1,473 @@
+:root {
+  --cell-size: 70px;
+  --dark-color: #2e2e2e;
+  --blue: #1976d2;
+  --yellow: #ffeb3b;
+  --red: #e91e63;
+  --light-color: #ecf0f1;
+}
+
+*,
+*::after,
+*::before {
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family:
+    dm sans,
+    fredoka one;
+  font-weight: 600;
+}
+
+body {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: var(--blue);
+}
+
+#game {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.board {
+  position: absolute;
+  margin: 0;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(7, auto);
+  padding: 1em;
+  border-radius: 40px;
+  background: linear-gradient(145deg, #1b7ee1, #176abd);
+  overflow: visible;
+  /* let the hover preview peek out above the board */
+}
+
+.cell,
+.pointer-cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.cell {
+  background: #1976d2;
+  box-shadow:
+    inset 12px 12px 20px #1564b3,
+    inset -12px -12px 20px #1d88f2;
+}
+
+.cell::before {
+  content: "";
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  background-color: var(--color);
+  border-radius: 50%;
+  background: #2e2e2e;
+  box-shadow:
+    inset 5px 5px 10px #1c1c1c,
+    inset -5px -5px 10px #404040;
+}
+
+.cell.empty {
+  cursor: not-allowed;
+}
+
+.cell.yellow::after,
+.cell.red::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border-radius: 50px;
+}
+
+.cell.yellow::after {
+  background: linear-gradient(145deg, #e6d435, #fffb3f);
+  box-shadow:
+    5px 5px 12px #c4b52d,
+    -5px -5px 12px #ffff49;
+}
+
+.cell.red::after {
+  background: linear-gradient(145deg, #d21b59, #f9206a);
+  box-shadow:
+    6px 6px 12px #b3174c,
+    -6px -6px 12px #ff257a;
+}
+
+.cell.yellow::before {
+  background: var(--yellow);
+  box-shadow:
+    inset 5px 5px 10px #867c1e,
+    inset -5px -5px 10px #ffff44;
+}
+
+.cell.red::before {
+  background: var(--red);
+  box-shadow:
+    inset 6px 6px 12px #b3174c,
+    inset -6px -6px 12px #ff257a;
+}
+
+.winning-message,
+.starting-message,
+.rules-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(25, 118, 210, 0.8);
+  justify-content: center;
+  align-items: center;
+  color: var(--light-color);
+  font-size: 4rem;
+  flex-direction: column;
+}
+
+.rules-message {
+  font-size: 2rem;
+  z-index: 5;
+  /* border: 1px solid green; */
+}
+
+/* Win overlay: stays full-screen so it still blocks clicks on the finished
+   board, but is nearly transparent so the board is fully visible, and it docks
+   the result card at the bottom instead of centering it over the board. */
+.winning-message {
+  background: rgba(25, 118, 210, 0.3);
+  justify-content: flex-end;
+  padding-bottom: 6vh;
+}
+
+/* Groups the result text + Restart button into one compact card that sits at
+   the bottom of the screen, keeping the board above it fully visible. */
+.result-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2.5rem;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #1b7ee1, #176abd);
+  box-shadow:
+    12px 12px 36px #11508f,
+    -12px -12px 36px #219cff;
+}
+
+.winning-message button,
+.starting-message button,
+.rules-message button {
+  font-size: 1.5rem;
+  background: linear-gradient(145deg, #1b7ee1, #176abd);
+  /* background: transparent; */
+  box-shadow:
+    20px 20px 60px #125699,
+    -20px -20px 60px #2096ff;
+  color: var(--light-color);
+  border-radius: 15px;
+  border: none;
+  padding: 0.25em 1em;
+  cursor: pointer;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.winning-message button {
+  position: static;
+  margin: 0;
+}
+
+.winning-message button:hover,
+.starting-message button:hover,
+.rules-message button:hover {
+  color: var(--blue);
+  border-radius: 15px;
+  background: #ecf0f1;
+  box-shadow:
+    inset 17px 17px 39px #c4c7c8,
+    inset -17px -17px 39px #ffffff;
+}
+
+.winning-message button:focus,
+.starting-message button:focus {
+  background-color: var(--light-color);
+  border: none;
+}
+
+.winning-message.show,
+.starting-message.show,
+.rules-message.show {
+  display: flex;
+}
+
+[data-winning-message-text],
+[data-starting-message-text] {
+  z-index: 10;
+  color: var(--light-color);
+  background: transparent;
+}
+
+[data-winning-message-text] {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.starting-message h1 {
+  z-index: 10;
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--light-color);
+  background: transparent;
+}
+
+#turn-bar {
+  height: 20px;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+  position: absolute;
+  background: black;
+}
+
+#scoreboard {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #1b7ee1, #176abd);
+  box-shadow:
+    8px 8px 20px #12588f,
+    -8px -8px 20px #1e92f5;
+  color: var(--light-color);
+  font-size: 1.1rem;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.score-value {
+  font-size: 1.8rem;
+}
+
+.red-label {
+  color: var(--red);
+}
+
+.yellow-label {
+  color: var(--yellow);
+}
+
+.score-divider {
+  width: 2px;
+  align-self: stretch;
+  background: rgba(236, 240, 241, 0.3);
+  border-radius: 2px;
+}
+
+.board-background {
+  z-index: -2;
+  height: 474px;
+  width: 544px;
+  background: transparent;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  padding: 1em;
+  border-radius: 40px;
+  box-shadow:
+    12px 12px 36px #11508f,
+    -12px -12px 36px #219cff;
+}
+
+.pointer {
+  /* Anchored to the board (its positioned parent), so it tracks the board at
+       every screen size. It sits above the board and drops down so most of it
+       tucks behind the board face — translateY is the tuning knob: larger %
+       sinks the preview further behind/into the top of the column. */
+  position: absolute;
+  left: 1em;
+  /* matches the board's padding so the cells line up with the grid */
+  right: 1em;
+  bottom: 100%;
+  /* start just above the board's top edge */
+  transform: translateY(60%);
+  /* drop ~60% behind the board */
+  z-index: -1;
+  /* render behind the board face */
+  pointer-events: none;
+  /* never block hovering the cell underneath */
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.pointer-cell.red::after,
+.pointer-cell.yellow::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #d21b59, #f9206a);
+  box-shadow:
+    6px 6px 12px #b3174c,
+    -6px -6px 12px #ff257a;
+}
+
+.pointer-cell.red {
+  background: var(--red);
+  box-shadow:
+    inset 6px 6px 12px #b3174c,
+    inset -6px -6px 12px #ff257a;
+}
+
+.pointer-cell.yellow {
+  background: var(--yellow);
+  box-shadow:
+    inset 5px 5px 10px #867c1e,
+    inset -5px -5px 10px #ffff44;
+}
+
+#redText {
+  color: var(--red);
+}
+
+#yellowText {
+  color: var(--yellow);
+}
+
+@media (max-width: 550px) {
+
+  .winning-message,
+  .starting-message {
+    font-size: 3rem;
+  }
+
+  .rules-message {
+    font-size: 1.5rem;
+    padding: 4rem;
+  }
+
+  .cell,
+  .pointer-cell {
+    width: 50px;
+    height: 50px;
+  }
+
+  .board-background {
+    height: 354px;
+    width: 404px;
+  }
+
+  #turn-bar {
+    height: 40px;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .cell,
+  .pointer-cell {
+    width: 40px;
+    height: 40px;
+  }
+
+  .board-background {
+    height: 294px;
+    width: 334px;
+  }
+
+  .winning-message,
+  .starting-message {
+    font-size: 3rem;
+  }
+
+  .rules-message {
+    font-size: 1.5rem;
+    padding: 2rem;
+  }
+
+  #turn-bar {
+    height: 60px;
+  }
+}
+
+@media (max-width: 350px) {
+
+  .cell,
+  .pointer-cell {
+    width: 30px;
+    height: 30px;
+  }
+
+  .board-background {
+    height: 234px;
+    width: 264px;
+  }
+
+  .winning-message,
+  .starting-message {
+    font-size: 2.5rem;
+  }
+
+  .rules-message {
+    font-size: 1.5rem;
+  }
+
+  .winning-message button,
+  .starting-message button,
+  .rules-message button {
+    font-size: 1.5rem;
+  }
+
+  #turn-bar {
+    height: 80px;
+  }
+}
