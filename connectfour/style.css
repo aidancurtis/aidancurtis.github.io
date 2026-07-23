@@ -160,18 +160,19 @@ body {
    board, but is nearly transparent so the board is fully visible, and it docks
    the result card at the bottom instead of centering it over the board. */
 .winning-message {
-  background: rgba(25, 118, 210, 0.3);
+  background: rgba(25, 118, 210, 0.12);
   justify-content: flex-end;
   padding-bottom: 6vh;
 }
 
 /* Groups the result text + Restart button into one compact card that sits at
-   the bottom of the screen, keeping the board above it fully visible. */
+   the bottom of the screen, keeping the board above it fully visible. Text on
+   the left, Restart button to its right. */
 .result-card {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 1.5rem 2.5rem;
   border-radius: 30px;
   background: linear-gradient(145deg, #1b7ee1, #176abd);
@@ -236,7 +237,7 @@ body {
 }
 
 [data-winning-message-text] {
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
 }
 

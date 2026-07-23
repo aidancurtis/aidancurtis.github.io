@@ -11,6 +11,7 @@ const turnBar = document.getElementById("turn-bar");
 const pointers = document.querySelectorAll(".pointer-cell");
 const playerScoreEl = document.getElementById("playerScore");
 const aiScoreEl = document.getElementById("aiScore");
+const drawScoreEl = document.getElementById("drawScore");
 
 // variables
 const RED = "#e91e63";
@@ -27,6 +28,7 @@ let humanTurnStartedAt = 0;
 
 let playerWins = 0;
 let aiWins = 0;
+let draws = 0;
 
 // event handlers
 const handleCellMouseOver = (e) => {
@@ -68,6 +70,7 @@ const insertMove = (e) => {
         winningText.style.color = WHITE;
         winningText.innerHTML = "Draw";
         winningElement.classList.add("show");
+        recordDraw();
         return;
     }
 
@@ -101,6 +104,7 @@ restartButton.addEventListener("click", startGame);
 function updateScoreboard() {
     playerScoreEl.textContent = playerWins;
     aiScoreEl.textContent = aiWins;
+    drawScoreEl.textContent = draws;
 }
 
 function recordWin(winner) {
@@ -109,6 +113,11 @@ function recordWin(winner) {
     } else {
         aiWins++;
     }
+    updateScoreboard();
+}
+
+function recordDraw() {
+    draws++;
     updateScoreboard();
 }
 
@@ -154,12 +163,11 @@ function computerMove() {
         winningText.innerHTML = "AI wins";
         winningElement.classList.add("show");
         recordWin(COMPUTER);
-    }
-
-    if (isFull()) {
+    } else if (isFull()) {
         winningText.style.color = WHITE;
         winningText.innerHTML = "Draw";
         winningElement.classList.add("show");
+        recordDraw();
     }
     swapMoves();
     turnBar.style.background = RED;
