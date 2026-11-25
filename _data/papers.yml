@@ -1,0 +1,8 @@
+- title: "Time- and Photon-Optimal Paths for the Preparation and Logical Flip of Gottesman-Kitaev-Preskill States"
+  authors: "<b>Aidan Curtis</b>*, Juan S Salcedo-Gallo*, Sergei Leonov, Kevin Limanta, Peter Chin, Salil Bedkihal, Mattias Fitzpatrick"
+  venue: "arXiv preprint"
+  year: 2026
+  links:
+    pdf: "https://arxiv.org/pdf/2611.15018"
+    arXiv: "https://arxiv.org/abs/2611.15018"
+    code: "https://github.com/jussalcedoga/GKP_brachistochrone"

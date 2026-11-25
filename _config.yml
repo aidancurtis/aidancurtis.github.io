@@ -1,0 +1,9 @@
+title: Aidan Curtis
+description: >-
+  Aidan Curtis — PhD student at Dartmouth's Thayer School of Engineering
+  working at the intersection of quantum engineering and deep learning.
+url: https://aidancurtis.github.io
+markdown: kramdown
+permalink: /thoughts/:title/
+exclude:
+  - README.md

@@ -1,0 +1,22 @@
+---
+layout: default
+title: Thoughts
+description: Notes and essays by Aidan Curtis.
+---
+<h2 class="title">Thoughts</h2>
+
+{% if site.posts.size > 0 %}
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+    <div>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% if post.description %}<p class="post-desc">{{ post.description }}</p>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="muted">Soon...</p>
+{% endif %}

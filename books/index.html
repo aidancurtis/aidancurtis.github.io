@@ -1,0 +1,27 @@
+---
+layout: default
+title: Books
+description: Books Aidan Curtis is reading and has read.
+shelves:
+  - key: reading
+    label: Currently reading
+  - key: read
+    label: Read
+---
+{% for shelf in page.shelves %}
+{% assign books = site.data.books[shelf.key] %}
+{% if books and books.size > 0 %}
+<section>
+  <h2 class="title">{{ shelf.label }}</h2>
+  {% if shelf.key == "read" %}
+  {% assign groups = books | group_by: "year" | sort: "name" | reverse %}
+  {% for group in groups %}
+  <h3 class="shelf-year">{{ group.name | default: "Earlier" }}</h3>
+  {% include book-list.html books=group.items %}
+  {% endfor %}
+  {% else %}
+  {% include book-list.html books=books %}
+  {% endif %}
+</section>
+{% endif %}
+{% endfor %}

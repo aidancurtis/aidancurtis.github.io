@@ -1,0 +1,28 @@
+---
+layout: default
+title: Research
+description: Research and papers by Aidan Curtis.
+---
+<h2 class="title">Research</h2>
+{% if site.data.papers and site.data.papers.size > 0 %}
+<ul class="papers">
+  {% for paper in site.data.papers %}
+  <li class="paper">
+    <span class="paper-title">{{ paper.title }}</span>
+    {% if paper.authors %}<span class="paper-authors">{{ paper.authors }}</span>{% endif %}
+    <span class="paper-venue">
+      {% if paper.venue %}<em>{{ paper.venue }}</em>{% if paper.year %}, {% endif %}{% endif %}{{ paper.year }}
+      {% if paper.note %} · {{ paper.note }}{% endif %}
+    </span>
+    {% if paper.links %}
+    <span class="paper-links">
+      {% for link in paper.links %}[<a href="{{ link[1] }}" target="_blank" rel="noopener noreferrer">{{ link[0] }}</a>]
+      {% endfor %}
+    </span>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="muted">Coming soon.</p>
+{% endif %}

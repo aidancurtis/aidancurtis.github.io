@@ -1,0 +1,8 @@
+<ul class="books">
+  {% for book in include.books %}
+  <li class="book">
+    <span class="book-title">{% if book.link %}<a href="{{ book.link }}" target="_blank" rel="noopener noreferrer">{{ book.title }}</a>{% else %}{{ book.title }}{% endif %}</span>{% if book.author %} <span class="book-author">— {{ book.author }}</span>{% endif %}
+    {% if book.note %}<p class="book-note">{{ book.note }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
